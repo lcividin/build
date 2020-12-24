@@ -1,0 +1,15 @@
+---
+- name: list configured provisioners
+  hosts: localhost
+
+  tasks:
+  - name: Get List Provisioners
+    ansible_vorteil.cloud.vorteil_list_provisioners:
+      repo_proto: "http"
+      repo_address: "localhost"
+      repo_port: "7472"
+    register: "provisioners"
+
+  - name: Dump List of Provisioners
+    debug:
+      msg: '{{provisioners}}'
